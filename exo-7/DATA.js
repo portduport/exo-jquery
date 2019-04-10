@@ -1,4 +1,5 @@
-var data = [{"id":1,"name":{"first":"Roxanne","last":"Lightwing"},"email":"rlightwing0@virginia.edu","gender":"Female","phone":"481-336-0761","country":"CA"},
+var data = [
+{"id":1,"name":{"first":"Roxanne","last":"Lightwing"},"email":"rlightwing0@virginia.edu","gender":"Female","phone":"481-336-0761","country":"CA"},
 {"id":2,"name":{"first":"Nicholas","last":"Mangeon"},"email":"nmangeon1@cbslocal.com","gender":"Male","phone":"398-312-4523","country":"VE"},
 {"id":3,"name":{"first":"Allyn","last":"Hurton"},"email":"ahurton2@prnewswire.com","gender":"Male","phone":"196-273-3134","country":"MX"},
 {"id":4,"name":{"first":"Rena","last":"Shevlan"},"email":"rshevlan3@dropbox.com","gender":"Female","phone":"605-284-6121","country":"HR"},
