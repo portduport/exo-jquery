@@ -16,7 +16,7 @@
 
 <body>
 <div class="container">
-    <button type="button" class="btn btn-primary">Export Table data into Excel</button>
+    <button type="button" id="export" class="btn btn-primary">Export Table data into Excel</button>
     <div class="form-group" style="clear: both;height: 80px; margin: 15px">
         <div style="width: 160px; float: left;"><label for="maxRows">Select number of rows</label><select name="statte" id="maxRows" class="form-control">
             <option value="1000">Show all</option>
@@ -25,7 +25,12 @@
             <option value="100">100</option>
         </select>
         </div>
-        <div style="width: 250px; float: right;"><label for="search">Type to search</label><input type="text" id="search" class="form-control" placeholder="">
+        <div style="width: 250px; float: right;">
+            <label for="search">Type to search</label>
+            <input type="text" class="form-control" id="search">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" id="buscar" type="button">Search</button>
+            </div>
         </div>
 
     </div>
@@ -87,24 +92,7 @@
                         <label for="InputPhone">Phone</label>
                         <input type="tel" class="form-control" id="InputPhone" aria-describedby="Phone">
                     </div>
-                    <div class="form-group">
-                        <label for="GenreSelect">Your Genre</label>
-                        <select class="form-control" id="GenreSelect">
-                            <option>male</option>
-                            <option>female</option>
-                            <option>cat</option>
-                            <option>unicorn</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="CountrySelect">Your Country</label>
-                        <select class="form-control" id="CountrySelect">
-                            <option>ES</option>
-                            <option>FR</option>
-                            <option>CA</option>
-                            <option>UK</option>
-                        </select>
-                    </div>
+
 
                     <button type="button" id="addRow" class="btn btn-primary">Submit</button>
                 </form>
