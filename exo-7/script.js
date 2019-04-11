@@ -3,12 +3,15 @@ console.log("exercice 7");
 function getData() {
     return data;  // data is defined in DATA.js file
 }
-function showPagination(){
+
+// Pagination function for the table STARTS HERE
+
+function showPagination() {
     var table = '#contact';
     $('.pagination').html('');
     var trnum = 0;
     var maxRows = parseInt($('#maxRows').val());
-    var totalRows = $(table + ' tbody tr:visible').length;
+    var totalRows = $(table + ' tbody tr').length;
     $(table + ' tr:gt(0):visible').each(function () {
         trnum++;
         if (trnum > maxRows) {
@@ -16,7 +19,7 @@ function showPagination(){
         } else {
             $(this).show();
         }
-    })
+    });
     if (totalRows > maxRows) {
         var pagenum = Math.ceil(totalRows / maxRows);
         for (var i = 1; i <= pagenum;) {
@@ -40,13 +43,10 @@ function showPagination(){
     })
 }
 
-$(document).ready(function () {
-//   data.forEach(function (data) {
-//     $('#donnesHERE').append('tr').append('td').text('mierda');
-// });
+function showDATA() {
+    $('#donnesHERE').find('tr').remove();
     $.each(data, function (index, value) {
         let $trCreate = $('<tr>');
-        //console.log(value);
         for (let register in value) {
             if (register === 'phone') {
                 let $tdCreate = $('<td>');
@@ -65,94 +65,200 @@ $(document).ready(function () {
                 $tdCreate.appendTo($trCreate);
             }
         }
+        let $tdCreate = $('<td>');
+        $tdCreate.html('<button type="button" class="btn btn-danger remove">Remove</button>');
+        $tdCreate.appendTo($trCreate);
         $trCreate.appendTo('#donnesHERE');
     });
+}
 
-    // Our pagination start here
 
-    var table = '#contact';
-    $('#maxRows').on('change', function () {
-        showPagination()
-    });
-    // $(function () {
-    //     $('table tr:eq(0)').prepend('<th>ID</th>');
-    //     var id = 0;
-    //     $('table tr:gt(0)').each(function () {
-    //         id++;
-    //         $(this).prepend('<td>' + id + '</td>');
-    //     })
-    // })
+$(document).ready(function () {
 
-    // Our Search an filter
-    var $rows = $('tbody tr');
-    $('#search').keyup(function() {
+    var baseID = data.length;
 
-        var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
-            reg = RegExp(val, 'i'),
-            text;
+    showDATA();
 
-        $rows.show().filter(function() {
-            let hide=true;
-            $(this).find('td').each(function(){
-                text = $(this).text().replace(/\s+/g, ' ');
-                if(reg.test(text)){
-                    hide=false;
-                }
-            });
-            return hide;
-        }).hide();
-        showPagination();
-    });
-
-    // Sort the name table
-    var $table = $("#contact");
-    var $tableBody = $table.find("#donnesHERE");
-    var rows, sortedRows, NomAZ, NomZA, PrenomAZ, PrenomZA, sortAscendingNom, sortAscendingPrenom;
-    var $buttons = $("th a");
-
-// one function to handle both ascending and descending sorts
-    function cmp(a, b) {
-        NomAZ = $(a).find('td:first-child').text();
-        NomZA = $(b).find('td:first-child').text();
-        if (NomAZ < NomZA) { return (sortAscendingNom) ? -1 : 1 }
-        else if (NomAZ > NomZA) { return (sortAscendingNom) ? 1 : -1 }
-        else { return 0 }
-    }
-
-    function cmprenom(a, b) {
-        PrenomAZ = $(a).find('td:first-child').text();
-        PrenomZA = $(b).find('td:first-child').text();
-        if (PrenomAZ < PrenomZA) { return (sortAscendingPrenom) ? -1 : 1 }
-        else if (PrenomAZ > PrenomZA) { return (sortAscendingPrenom) ? 1 : -1 }
-        else { return 0 }
-    }
-
-    function updateData() {
-        $tableBody.remove('tr');
-        $tableBody.append(sortedRows);
-    }
-
-    $buttons.click(function() {
-        rows = $tableBody.find("tr");
-        if ($(this).attr('id') === 'sortAscendingNom') { sortAscendingNom = true }
-        else if ($(this).attr('id') === 'sortDescendingNom') { sortAscendingNom = false }
-       // if ($(this).attr('id') === 'sortDescendingPrenom') { sortAscendingPrenom = true }
-        //else if ($(this).attr('id') === 'sortDescendingPrenom') { sortAscendingPrenom = false }
-        sortedRows = rows.sort(cmp);
-        //sortedRows = rows.sort(cmprenom);
-        updateData();
-    })
-
-// END
+    // Remove lines STARTS HERE
+    $('.remove').on('click', (event) => {
+        $(event.currentTarget).closest('tr').remove();
 });
 
-// function addLineToTable(data) {
-//   for (let i = 0; i < data.length; i++) {
-//     $('#donnesHERE').append('tr').append('td').text('mierda');
-//
-//     // for (let donne in data) {
-//     // }
-//   }
-// }
-// addLineToTable(data);
+
+// Adding a new contact STARTS HERE
+$("#addRow").on('click', function () {
+    let newID = baseID + 1;
+    let newContact = {
+        id: newID,
+        name:
+            {
+                first: $("#InputPrenom").val(),
+                last: $("#InputNom").val()
+            },
+        email: $("#InputEmail").val(),
+        gender: $("#GenreSelect").val(),
+        phone: $("#InputPhone").val(),
+        country: $("#CountrySelect").val()
+    };
+    data.push(newContact);
+    console.log(newContact);
+    console.log(data);
+    $('#donnesHERE').find('tr').remove();
+    showDATA();
+});
+
+// Our pagination starter
+
+$('#maxRows').on('change', function () {
+    showPagination()
+});
+
+
+// Our Search an filter STARTS HERE
+var $rows = $('tbody tr');
+var $searchResult = [];
+$('#search').keyup(function () {
+    $searchResult = [];
+    var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+        reg = RegExp(val, 'i'),
+        text;
+    console.log(reg);
+    console.log(reg.test(text));
+    // buscar en data la busqueda y devolver solo las filas que corresponden
+    // $rows.show().filter(function () {
+    //     let hide = true;
+    //     $(this).find('td').each(function () {
+    //         text = $(this).text().replace(/\s+/g, ' ');
+    //         if (reg.test(text)) {
+    //             hide = false;
+    //             $searchResult.push(text);
+    //             console.log($searchResult);
+    //         }
+    //     });
+    //     return hide;
+    // }).hide();
+    showPagination();
+});
+
+// Sort the name table STRATS HERE
+var $table = $("#contact");
+var $tableBody = $table.find("#donnesHERE");
+var rows, sortedRows, NomAZ, NomZA, sortAscendingNom;
+var $buttons = $("th a");
+
+function cmp(a, b) {
+    NomAZ = $(a).find('td:first-child').text().toLowerCase();
+    NomZA = $(b).find('td:first-child').text().toLowerCase();
+    if (NomAZ < NomZA) {
+        return (sortAscendingNom) ? -1 : 1
+    } else if (NomAZ > NomZA) {
+        return (sortAscendingNom) ? 1 : -1
+    } else {
+        return 0
+    }
+}
+
+function updateData() {
+    $tableBody.remove('tr');
+    $tableBody.append(sortedRows);
+}
+
+$buttons.click(function () {
+    rows = $tableBody.find("tr");
+    if ($(this).attr('id') === 'sortAscendingNom') {
+        sortAscendingNom = true
+    } else if ($(this).attr('id') === 'sortDescendingNom') {
+        sortAscendingNom = false
+    }
+    sortedRows = rows.sort(cmp);
+    updateData();
+});
+
+// Export as CSV
+
+function exportTableToCSV($table, filename) {
+
+    var $rows = $table.find('tr:has(td)'),
+
+        // Temporary delimiter characters unlikely to be typed by keyboard
+        // This is to avoid accidentally splitting the actual contents
+        tmpColDelim = String.fromCharCode(11), // vertical tab character
+        tmpRowDelim = String.fromCharCode(0), // null character
+
+        // actual delimiter characters for CSV format
+        colDelim = '","',
+        rowDelim = '"\r\n"',
+
+        // Grab text from table into CSV formatted string
+        csv = '"' + $rows.map(function (i, row) {
+            var $row = $(row),
+                $cols = $row.find('td');
+
+            return $cols.map(function (j, col) {
+                var $col = $(col),
+                    text = $col.text();
+
+                return text.replace(/"/g, '""'); // escape double quotes
+
+            }).get().join(tmpColDelim);
+
+        }).get().join(tmpRowDelim)
+            .split(tmpRowDelim).join(rowDelim)
+            .split(tmpColDelim).join(colDelim) + '"';
+
+    // Deliberate 'false', see comment below
+    if (false && window.navigator.msSaveBlob) {
+
+        var blob = new Blob([decodeURIComponent(csv)], {
+            type: 'text/csv;charset=utf8'
+        });
+
+        // Crashes in IE 10, IE 11 and Microsoft Edge
+        // See MS Edge Issue #10396033
+        // Hence, the deliberate 'false'
+        // This is here just for completeness
+        // Remove the 'false' at your own risk
+        window.navigator.msSaveBlob(blob, filename);
+
+    } else if (window.Blob && window.URL) {
+        // HTML5 Blob
+        var blob = new Blob([csv], {
+            type: 'text/csv;charset=utf-8'
+        });
+        var csvUrl = URL.createObjectURL(blob);
+
+        $(this)
+            .attr({
+                'download': filename,
+                'href': csvUrl
+            });
+    } else {
+        // Data URI
+        var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+        $(this)
+            .attr({
+                'download': filename,
+                'href': csvData,
+                'target': '_blank'
+            });
+    }
+}
+
+// This must be a hyperlink
+$(".export").on('click', function (event) {
+    // CSV
+    var args = [$('#home>table'), 'export.csv'];
+
+    exportTableToCSV.apply(this, args);
+
+    // If CSV, don't do event.preventDefault() or return false
+    // We actually need this to be a typical hyperlink
+});
+
+// END
+})
+;
+
+
 
