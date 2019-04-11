@@ -12,7 +12,7 @@ function showPagination() {
     var trnum = 0;
     var maxRows = parseInt($('#maxRows').val());
     var totalRows = $(table + ' tbody tr').length;
-    $(table + ' tr:gt(0):visible').each(function () {
+    $(table + ' tr:gt(0)').each(function () {
         trnum++;
         if (trnum > maxRows) {
             $(this).hide();
