@@ -15,30 +15,45 @@
 </head>
 
 <body>
-<div class="container">
-    <button type="button" class="btn btn-primary">Export Table data into Excel</button>
-    <div class="form-group" style="clear: both;height: 80px; margin: 15px">
-        <div style="width: 160px; float: left;"><label for="maxRows">Select number of rows</label><select name="statte" id="maxRows" class="form-control">
-            <option value="1000">Show all</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-        </select>
-        </div>
-        <div style="width: 250px; float: right;"><label for="search">Type to search</label><input type="text" id="search" class="form-control" placeholder="">
-        </div>
+<div class="">
+    <div id="headerContainer" style="position: fixed;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    box-shadow: 0px 0px 5px #aaaaaa;
+    justify-content: center;
+    display: flex;
+    padding-top: 5px;">
+        <div class="form-group" style="display: flex; width: 80%; justify-content: space-between;">
+            <div style="width: 160px; float: left;"><label for="maxRows">Number of rows</label><select
+                    name="statte" id="maxRows" class="form-control">
+                <option value="1000">Show all</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            </div>
+            <div class="form-group" style="height: 80px; margin: 33px"><button type="button" class="btn btn-primary">Export Table CSV</button>
+            </div>
+            <div style="width: 250px;"><label for="search">Type to search</label><input type="text"
+                                                                                                      id="search"
+                                                                                                      class="form-control"
+                                                                                                      placeholder="">
+            </div>
 
+        </div>
     </div>
 
 
-
     <!-- Tabs for order the content-->
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs" id="myTab" role="tablist" style="    padding: 124px 30px 0px 30px;">
         <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Table</a>
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+               aria-selected="true">Table</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Add a Contact</a>
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+               aria-selected="false">Add a Contact</a>
         </li>
 
     </ul>
@@ -50,8 +65,10 @@
                     <th scope="col">Nom
                         <div style="display: inline-block; margin-left: 3rem;"><a id="sortAscendingNom"
                                                                                   style="display: flex; height: 7px"><i
-                                class="fas fa-sort-up"></i></a><a id="sortDescendingNom" style="display: flex;height: 7px"><i
-                                class="fas fa-sort-down"></i></a></div></th>
+                                class="fas fa-sort-up"></i></a><a id="sortDescendingNom"
+                                                                  style="display: flex;height: 7px"><i
+                                class="fas fa-sort-down"></i></a></div>
+                    </th>
                     <th scope="col">Prénom</th>
                     <th scope="col">Email</th>
                     <th scope="col">Numéro de Téléphone</th>
@@ -112,9 +129,15 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
