@@ -128,7 +128,7 @@ $(document).ready(function () {
 
         newTableData.push(newContact);
         $('#donnesHERE').find('tr').remove();
-        showDATA();
+        showDATA(newTableData);
     });
 
 // Our pagination starter
@@ -145,15 +145,19 @@ $(document).ready(function () {
         let value = $('#search').val().toLowerCase();
         let tablita = [];
         newTableData.forEach(function (item) {
-            for (let register in item) {
-                var busqueda = item[register];
-                if (busqueda.toLowerCase().indexOf(value) > -1) {
-                    tablita.push(item);
-                    // console.log(busqueda);
-                }
-            }
+            // for (let register in item) {
+            //     var busqueda = item[register];
+            //     if (busqueda.toLowerCase().indexOf(value) > -1) {
+            //         tablita.push(item);
+            //         // console.log(busqueda);
+            //     }
+            // }
             //console.log(item);
+            if(item.nom.toLowerCase().indexOf(value) > -1 || item.prenom.toLowerCase().indexOf(value) > -1 || item.email.toLowerCase().indexOf(value) > -1 || item.telephone.toLowerCase().indexOf(value) > -1){
+                tablita.push(item);
+            }
         });
+        console.log(tablita);
         showDATA(tablita);
         showPagination();
     });
