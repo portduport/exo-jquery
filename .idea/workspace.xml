@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5248c7e3-cf22-45ac-9319-31b6b1451ff0" name="Default Changelist" comment="added images">
+    <list default="true" id="5248c7e3-cf22-45ac-9319-31b6b1451ff0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exo-7/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/exo-7/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exo-7/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/exo-7/script.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exo-7/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+            <state relative-caret-position="-403">
+              <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -78,8 +80,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exo-7/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5382">
-              <caret line="279" lean-forward="true" selection-start-line="279" selection-end-line="279" />
+            <state relative-caret-position="172">
+              <caret line="148" column="16" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -150,6 +152,11 @@
               <item name="Exos-JQuery" type="462c0819:PsiDirectoryNode" />
               <item name="exo-7" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Exos-JQuery" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Exos-JQuery" type="462c0819:PsiDirectoryNode" />
+              <item name="exo-8" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -200,7 +207,7 @@
       <workItem from="1554715085275" duration="62000" />
       <workItem from="1554715159991" duration="61673000" />
       <workItem from="1554967335492" duration="19909000" />
-      <workItem from="1555311929000" duration="820000" />
+      <workItem from="1555311929000" duration="3074000" />
     </task>
     <task id="LOCAL-00001" summary="EXO 4 finished">
       <created>1554798675640</created>
@@ -265,11 +272,25 @@
       <option name="project" value="LOCAL" />
       <updated>1554993724913</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added images">
+      <created>1555312762074</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1555312762074</updated>
+    </task>
+    <task id="LOCAL-00011" summary="EXO 7 Search working">
+      <created>1555314163910</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1555314163910</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82464000" />
+    <option name="totallyTimeSpent" value="84718000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -282,8 +303,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -295,7 +317,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32998884" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32998884" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32998884" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -336,9 +358,10 @@
     <MESSAGE value="EXO 7, bonus 3 finished" />
     <MESSAGE value="EXO 7, Remove button added" />
     <MESSAGE value="EXO 7, corrections in filter" />
-    <MESSAGE value="added images" />
     <MESSAGE value="EXO 7 search not finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="EXO 7 search not finished" />
+    <MESSAGE value="added images" />
+    <MESSAGE value="EXO 7 Search working" />
+    <option name="LAST_COMMIT_MESSAGE" value="EXO 7 Search working" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/exo-3/index.css">
@@ -419,10 +442,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.MD">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/exo-7/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+        <state relative-caret-position="-403">
+          <caret line="13" column="24" lean-forward="true" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -437,18 +468,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.MD">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/exo-7/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5382">
-          <caret line="279" lean-forward="true" selection-start-line="279" selection-end-line="279" />
+        <state relative-caret-position="172">
+          <caret line="148" column="16" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="35" />
         </state>
       </provider>
     </entry>

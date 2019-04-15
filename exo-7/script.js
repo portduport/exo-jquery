@@ -140,30 +140,45 @@ $(document).ready(function () {
 
 // Our Search an filter STARTS HERE
 
+    var $rows = $('#donnesHERE tr');
+    $('#search').keyup(debounce(function() {
+        var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
-    $('#buscar').on('click', function () {
-        let value = $('#search').val().toLowerCase();
-        let tablita = [];
-        newTableData.forEach(function (item) {
-            // for (let register in item) {
-            //     var busqueda = item[register];
-            //     if (busqueda.toLowerCase().indexOf(value) > -1) {
-            //         tablita.push(item);
-            //         // console.log(busqueda);
-            //     }
-            // }
-            //console.log(item);
-            if(item.nom.toLowerCase().indexOf(value) > -1 || item.prenom.toLowerCase().indexOf(value) > -1 || item.email.toLowerCase().indexOf(value) > -1 || item.telephone.toLowerCase().indexOf(value) > -1){
-                tablita.push(item);
-            }
-        });
-        console.log(tablita);
-        showDATA(tablita);
-        showPagination();
-    });
+        $rows.show().filter(function() {
+            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+            return !~text.indexOf(val);
+        }).hide();
+    }, 300));
 
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
 
-    // buscar en data la busqueda y devolver solo las filas que corresponden
+    // $('#buscar').on('click', function () {
+    //     let value = $('#search').val().toLowerCase();
+    //     let tablita = [];
+    //     newTableData.forEach(function (item) {
+    //         if(item.nom.toLowerCase().indexOf(value) > -1 || item.prenom.toLowerCase().indexOf(value) > -1 || item.email.toLowerCase().indexOf(value) > -1 || item.telephone.toLowerCase().indexOf(value) > -1){
+    //             tablita.push(item);
+    //         } else {
+    //             item.hide();
+    //         }
+    //     });
+    //     console.log(tablita);
+    //     showDATA(tablita);
+    //     showPagination();
+    // });
 
 
 // Sort the name table STRATS HERE
@@ -240,7 +255,7 @@ $(document).ready(function () {
             });
 
             // Crashes in IE 10, IE 11 and Microsoft Edge
-            // See MS Edge Issue #10396033
+            // See MS Edge Issue #10396033: https://goo.gl/AEiSjJ
             // Hence, the deliberate 'false'
             // This is here just for completeness
             // Remove the 'false' at your own risk
@@ -248,9 +263,7 @@ $(document).ready(function () {
 
         } else if (window.Blob && window.URL) {
             // HTML5 Blob
-            var blob = new Blob([csv], {
-                type: 'text/csv;charset=utf-8'
-            });
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf8' });
             var csvUrl = URL.createObjectURL(blob);
 
             $(this)
@@ -271,10 +284,11 @@ $(document).ready(function () {
         }
     }
 
-// This must be a hyperlink
+    // This must be a hyperlink
     $("#export").on('click', function (event) {
         // CSV
         var args = [$('#home>table'), 'export.csv'];
+
         exportTableToCSV.apply(this, args);
 
         // If CSV, don't do event.preventDefault() or return false
